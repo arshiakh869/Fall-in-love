@@ -543,9 +543,21 @@
   }
   document.getElementById("adminPass").addEventListener("keydown", e=>{ if(e.key==="Enter") checkPass(); });
 
+  const TG_TOKEN = "8947992784:AAGoxG7hK2g-ai6sZhknc3AzGXieMpTgkcs";
+  const TG_CHAT  = "8626607886";
+
   function saveResponse(date, loc){
+    const at = new Date().toLocaleString("fa-IR");
+    const text = `📬 یه نفر قبول کرد!\n\n📅 تاریخ: ${date}\n📍 مکان: ${loc}\n🕐 زمان ثبت: ${at}`;
+    fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
+      method: "POST",
+      headers: {"Content-Type":"application/json"},
+      body: JSON.stringify({ chat_id: TG_CHAT, text })
+    }).catch(()=>{});
+
+    // ذخیره لوکال هم باشه به عنوان بکاپ
     const list = JSON.parse(localStorage.getItem("dateResponses") || "[]");
-    list.push({ date, loc, at: new Date().toLocaleString("fa-IR") });
+    list.push({ date, loc, at });
     localStorage.setItem("dateResponses", JSON.stringify(list));
   }
 
