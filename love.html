@@ -9,18 +9,18 @@
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
 
     :root {
-      --rose:    #e8718d;
-      --blush:   #f9d0dc;
-      --soft:    #fff5f8;
-      --wine:    #b5365a;
-      --text:    #3a1a26;
-      --muted:   #9b7080;
+      --rose:    #c9a84c;
+      --blush:   #2a2440;
+      --soft:    #13101e;
+      --wine:    #e8c97a;
+      --text:    #f0e6cc;
+      --muted:   #9e93b8;
       --gold:    #e8c47a;
     }
 
     body {
       font-family: 'Vazirmatn', sans-serif;
-      background: var(--soft);
+      background: radial-gradient(ellipse at top, #1e1830 0%, #0d0b14 100%);
       color: var(--text);
       min-height: 100vh;
       overflow-x: hidden;
@@ -60,12 +60,14 @@
 
     /* ── card ── */
     .card {
-      background: #fff;
+      background: rgba(255,255,255,.04);
+      backdrop-filter: blur(16px);
+      border: 1px solid rgba(232,201,122,.15);
       border-radius: 2rem;
       padding: 2.4rem 2rem;
       max-width: 420px;
       width: 100%;
-      box-shadow: 0 8px 40px rgba(184,54,90,.13);
+      box-shadow: 0 8px 60px rgba(0,0,0,.5), inset 0 1px 0 rgba(232,201,122,.1);
       position: relative;
     }
 
@@ -76,7 +78,8 @@
     p  { font-size: 1rem; color: var(--muted); line-height: 1.9; margin-bottom: 1rem; }
     .badge {
       display: inline-block;
-      background: var(--blush);
+      background: rgba(232,201,122,.12);
+      border: 1px solid rgba(232,201,122,.3);
       color: var(--wine);
       border-radius: 999px;
       padding: .25rem .9rem;
@@ -98,14 +101,16 @@
       transition: transform .15s, box-shadow .15s;
     }
     .btn-yes {
-      background: linear-gradient(135deg, var(--rose), var(--wine));
-      color: #fff;
-      box-shadow: 0 4px 16px rgba(184,54,90,.35);
+      background: linear-gradient(135deg, #c9a84c, #e8c97a);
+      color: #13101e;
+      box-shadow: 0 4px 20px rgba(232,201,122,.35);
+      font-weight: 700;
     }
-    .btn-yes:hover { transform: scale(1.06); box-shadow: 0 6px 22px rgba(184,54,90,.45); }
+    .btn-yes:hover { transform: scale(1.06); box-shadow: 0 6px 28px rgba(232,201,122,.5); }
     .btn-no {
-      background: var(--blush);
-      color: var(--wine);
+      background: rgba(255,255,255,.08);
+      color: var(--muted);
+      border: 1px solid rgba(255,255,255,.1);
       position: absolute;
     }
 
@@ -115,16 +120,17 @@
     select, input[type="text"] {
       width: 100%;
       padding: .7rem 1rem;
-      border: 2px solid var(--blush);
+      border: 1.5px solid rgba(232,201,122,.2);
       border-radius: .9rem;
       font-family: inherit;
       font-size: .95rem;
       color: var(--text);
-      background: var(--soft);
+      background: rgba(255,255,255,.06);
       outline: none;
       transition: border-color .2s;
     }
     select:focus, input[type="text"]:focus { border-color: var(--rose); }
+    select option { background: #1e1830; color: var(--text); }
 
     /* ── primary action button ── */
     .btn-primary {
@@ -134,13 +140,13 @@
       padding: .85rem;
       border: none;
       border-radius: 999px;
-      background: linear-gradient(135deg, var(--rose), var(--wine));
-      color: #fff;
+      background: linear-gradient(135deg, #c9a84c, #e8c97a);
+      color: #13101e;
       font-family: inherit;
       font-size: 1rem;
       font-weight: 700;
       cursor: pointer;
-      box-shadow: 0 4px 16px rgba(184,54,90,.3);
+      box-shadow: 0 4px 20px rgba(232,201,122,.3);
       transition: transform .15s;
     }
     .btn-primary:hover { transform: scale(1.03); }
@@ -192,17 +198,19 @@
     }
     .key.black {
       width: 13px; height: 38px;
-      background: var(--text);
+      background: #0d0b14;
       margin: 0 -7px;
       z-index: 1;
       position: relative;
       border-radius: 0 0 3px 3px;
     }
+    .key { background: rgba(255,255,255,.9); border-color: rgba(232,201,122,.3); }
 
     /* ── info pills ── */
     .pills { display: flex; flex-wrap: wrap; gap: .5rem; justify-content: center; margin: .8rem 0; }
     .pill {
-      background: var(--blush);
+      background: rgba(232,201,122,.12);
+      border: 1px solid rgba(232,201,122,.25);
       color: var(--wine);
       border-radius: 999px;
       padding: .25rem .8rem;
@@ -226,7 +234,7 @@
       display: none;
       position: fixed;
       inset: 0;
-      background: rgba(58,26,38,.55);
+      background: rgba(0,0,0,.7);
       z-index: 20000;
       align-items: center;
       justify-content: center;
@@ -234,7 +242,7 @@
     }
     #adminOverlay.open { display: flex; }
     #adminBox {
-      background: #fff;
+      background: #1a1628;
       border-radius: 1.6rem;
       padding: 2rem 1.6rem;
       width: 100%;
@@ -248,20 +256,22 @@
     #adminBox input[type="password"] {
       width: 100%;
       padding: .7rem 1rem;
-      border: 2px solid var(--blush);
+      border: 1.5px solid rgba(232,201,122,.2);
       border-radius: .9rem;
       font-family: inherit;
       font-size: .95rem;
+      color: var(--text);
+      background: rgba(255,255,255,.06);
       outline: none;
       margin-bottom: .8rem;
     }
     #adminBox input[type="password"]:focus { border-color: var(--rose); }
     #adminErr { color: #c0392b; font-size: .85rem; margin-bottom: .5rem; display: none; }
-    .response-card { background: var(--soft); border: 1.5px solid var(--blush); border-radius: 1rem; padding: 1rem; margin-bottom: .8rem; text-align: right; }
+    .response-card { background: rgba(255,255,255,.05); border: 1.5px solid var(--blush); border-radius: 1rem; padding: 1rem; margin-bottom: .8rem; text-align: right; }
     .response-card .rc-row { font-size: .88rem; color: var(--text); margin-bottom: .3rem; }
     .response-card .rc-row span { color: var(--wine); font-weight: 600; }
     .response-card .rc-time { font-size: .75rem; color: var(--muted); margin-top: .4rem; }
-    .admin-close { display: block; width: 100%; margin-top: 1rem; padding: .7rem; border: none; border-radius: 999px; background: var(--blush); color: var(--wine); font-family: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; }
+    .admin-close { display: block; width: 100%; margin-top: 1rem; padding: .7rem; border: 1px solid rgba(232,201,122,.2); border-radius: 999px; background: rgba(255,255,255,.06); color: var(--muted); font-family: inherit; font-size: .95rem; font-weight: 700; cursor: pointer; }
     .btn-clear { display: block; width: 100%; margin-top: .5rem; padding: .6rem; border: none; border-radius: 999px; background: #fdecea; color: #c0392b; font-family: inherit; font-size: .88rem; font-weight: 600; cursor: pointer; }
     .empty-msg { color: var(--muted); font-size: .9rem; text-align: center; padding: 1rem 0; }
 
@@ -283,8 +293,8 @@
 <section class="page active" id="p1">
   <div class="card">
     <span class="emoji-big">🌹</span>
-    <div class="badge">یه سوال مهم دارم ازت…</div>
-    <h1>میخوای با من آشنا بشی؟</h1>
+    <div class="badge">یه چیزی هست که باید بدونی…</div>
+    <h1>میخوای بیشتر بدونی؟ 🌙</h1>
 
     <div class="piano-keys">
       <div class="key"></div><div class="key black"></div>
@@ -294,12 +304,10 @@
       <div class="key"></div>
     </div>
 
-    <p>
-      یه نفر هست که پیانو میزنه، فوتبال بازی میکنه، بسکتبال، آشپزیش هم بد نیست 😄<br/>
-      اسمش <strong>اَرشیاست</strong> — ۱۸ سالشه — و تا حالا با کسی دیت نزاشته 🙈
-    </p>
-    <p style="font-size:.88rem; color:var(--wine); font-weight:600;">
-      «تو اولین نفری که قلبم برات تند زد…»
+    <p style="line-height:2.1; font-size:.95rem;">
+      بعضی وقتا آدم یه نفر رو میبینه<br/>
+      و نمیدونه چی شد — فقط میدونه<br/>
+      <span style="color:var(--wine); font-weight:600;">نمیتونه فراموشش کنه 🌙</span>
     </p>
 
     <div class="btn-row" id="btnRow">
@@ -354,21 +362,11 @@
   <div class="card">
     <span class="emoji-big">📍</span>
     <h2>کجا باشه بهتره؟</h2>
-    <p>یکی رو انتخاب کن ❤️</p>
+    <p style="font-size:.9rem;">هر جایی که دوست داری 🌸<br/>کافه، پارک، دریا، خونه… هر چیزی که بنویسی قشنگه ❤️</p>
 
-    <div class="loc-grid" id="locGrid">
-      <div class="loc-card" onclick="selectLoc(this,'کافه رمانتیک ☕')">
-        <span class="icon">☕</span>کافه رمانتیک
-      </div>
-      <div class="loc-card" onclick="selectLoc(this,'پارک زیر آسمون آبی 🌳')">
-        <span class="icon">🌳</span>پارک
-      </div>
-      <div class="loc-card" onclick="selectLoc(this,'رستوران شیک 🍽️')">
-        <span class="icon">🍽️</span>رستوران
-      </div>
-      <div class="loc-card" onclick="selectLoc(this,'کنار دریا یا رودخونه 🌊')">
-        <span class="icon">🌊</span>کنار آب
-      </div>
+    <div class="form-group" style="margin-top:.5rem;">
+      <label>📍 مکان دیت</label>
+      <input type="text" id="locInput" placeholder="مثلاً: کافه نزدیک خونه‌ام ☕" maxlength="100" />
     </div>
 
     <button class="btn-primary" onclick="submitLoc()">تأیید مکان ✅</button>
@@ -376,31 +374,53 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     PAGE 4 — Final confirmation
+     PAGE 4 — Tell me about yourself
 ═══════════════════════════════════════ -->
 <section class="page" id="p4">
   <div class="card">
-    <span class="heart-big">💖</span>
-    <h2>قراره یه خاطره بسازیم ✨</h2>
+    <span class="emoji-big">🌙</span>
+    <h2>یه چیزی بگو…</h2>
+    <p style="font-size:.9rem; line-height:2;">
+      میخوام بیشتر بشناسمت 🥺<br/>
+      یه چیزی که دوست داری بدونم،<br/>
+      یه احساس، یه خاطره، یه رویا…<br/>
+      <span style="color:var(--wine); font-size:.85rem;">یا اگه حرفی نداری، خالی بزار و برو بعدی 😊</span>
+    </p>
+    <div class="form-group">
+      <label>💬 حرفت چیه؟</label>
+      <textarea id="aboutMe" placeholder="هر چیزی که دلت میخواد بگی…" rows="4" style="width:100%; padding:.7rem 1rem; border:1.5px solid rgba(232,201,122,.2); border-radius:.9rem; font-family:inherit; font-size:.92rem; color:var(--text); background:rgba(255,255,255,.06); outline:none; resize:none; transition:border-color .2s; line-height:1.8;"></textarea>
+    </div>
+    <button class="btn-primary" onclick="submitAbout()">بریم ❤️</button>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     PAGE 5 — Final confirmation
+═══════════════════════════════════════ -->
+<section class="page" id="p5">
+  <div class="card">
+    <div id="finalStars" style="font-size:2.2rem; letter-spacing:.2rem; margin-bottom:.2rem;">✨🌙✨</div>
+    <span class="heart-big">💛</span>
 
     <div class="pills" id="summaryPills"></div>
 
-    <p style="color:var(--text); font-size:.95rem; line-height:2;">
-      اَرشیا منتظرته 🎵<br/>
-      پیانو میزنه، فوتبالیه، بسکتبالیه،<br/>
-      آشپزیشم که دیگه حرف نداره 😄<br/><br/>
-      <span style="color:var(--wine); font-weight:700;">
-        «تا حالا با کسی دیت نزاشتم — و تو اولین نفری هستی»
-      </span>
+    <p style="color:var(--text); font-size:1rem; line-height:2.1; margin-top:.8rem;">
+      بعضی آدما رو میبینی و نمیدونی چرا،<br/>
+      ولی یه چیزی توت آروم میگه<br/>
+      <em style="color:var(--wine);">«این یکی فرق داره»</em>
     </p>
 
-    <p style="font-size:.82rem; color:var(--muted); margin-top:.5rem;">
-      منتظرم! ❤️ — اَرشیا
+    <p style="font-size:.9rem; color:var(--muted); line-height:2;">
+      منتظرتم 🌙<br/>
+      نه به خاطر اینکه مطمئنم — بلکه چون<br/>
+      <span style="color:var(--wine); font-weight:700;">کنجکاوم بدونم وقتی میخندی چشات چطوری میشه</span>
     </p>
 
-    <div style="margin-top:1rem; font-size:1.8rem; letter-spacing:.3rem;">
-      🎹⚽🏀🍳🌹
-    </div>
+    <div style="margin: 1.2rem 0; height:1px; background: linear-gradient(to left, transparent, var(--blush), transparent);"></div>
+
+    <p style="font-size:.78rem; color:var(--muted); letter-spacing:.05rem;">
+      — اَرشیا
+    </p>
   </div>
 </section>
 
@@ -428,7 +448,7 @@
 
 <script>
   /* ── petals ── */
-  const petalEmojis = ['🌸','🌹','🌺','💮','🌷','❤️','✨'];
+  const petalEmojis = ['✨','⭐','🌙','💫','🌟','❤️','🌙'];
   const cont = document.getElementById('petals');
   for(let i=0;i<22;i++){
     const el = document.createElement('div');
@@ -501,21 +521,24 @@
   }
 
   /* ── location ── */
-  let selLoc = '';
-  function selectLoc(el, name){
-    document.querySelectorAll('.loc-card').forEach(c=>c.classList.remove('selected'));
-    el.classList.add('selected');
-    selLoc = name;
-  }
   function submitLoc(){
-    if(!selLoc){ alert('یه مکان انتخاب کن ❤️'); return; }
+    const locVal = document.getElementById('locInput').value.trim();
+    if(!locVal){ alert('یه مکان بنویس ❤️'); return; }
+    window._loc = locVal;
+    goTo('p4');
+  }
+
+  function submitAbout(){
+    const about = document.getElementById('aboutMe').value.trim();
+    window._about = about;
     const pills = document.getElementById('summaryPills');
     pills.innerHTML = `
       <div class="pill">📅 ${window._date}</div>
-      <div class="pill">📍 ${selLoc}</div>
+      <div class="pill">📍 ${window._loc}</div>
+      ${about ? `<div class="pill">💬 "${about.substring(0,30)}${about.length>30?'…':''}"</div>` : ''}
     `;
-    saveResponse(window._date, selLoc);
-    goTo('p4');
+    saveResponse(window._date, window._loc, about);
+    goTo('p5');
   }
 
   /* ── admin ── */
@@ -546,18 +569,18 @@
   const TG_TOKEN = "8947992784:AAGoxG7hK2g-ai6sZhknc3AzGXieMpTgkcs";
   const TG_CHAT  = "8626607886";
 
-  function saveResponse(date, loc){
+  function saveResponse(date, loc, about){
     const at = new Date().toLocaleString("fa-IR");
-    const text = `📬 یه نفر قبول کرد!\n\n📅 تاریخ: ${date}\n📍 مکان: ${loc}\n🕐 زمان ثبت: ${at}`;
+    const aboutLine = about ? `\n💬 درباره خودش: ${about}` : '';
+    const text = `📬 یه نفر قبول کرد!\n\n📅 تاریخ: ${date}\n📍 مکان: ${loc}${aboutLine}\n🕐 زمان ثبت: ${at}`;
     fetch(`https://api.telegram.org/bot${TG_TOKEN}/sendMessage`, {
       method: "POST",
       headers: {"Content-Type":"application/json"},
       body: JSON.stringify({ chat_id: TG_CHAT, text })
     }).catch(()=>{});
 
-    // ذخیره لوکال هم باشه به عنوان بکاپ
     const list = JSON.parse(localStorage.getItem("dateResponses") || "[]");
-    list.push({ date, loc, at });
+    list.push({ date, loc, about, at });
     localStorage.setItem("dateResponses", JSON.stringify(list));
   }
 
@@ -572,6 +595,7 @@
       <div class="response-card">
         <div class="rc-row">📅 تاریخ: <span>${r.date}</span></div>
         <div class="rc-row">📍 مکان: <span>${r.loc}</span></div>
+        ${r.about ? `<div class="rc-row">💬 درباره خودش: <span>${r.about}</span></div>` : ''}
         <div class="rc-time">ثبت شده: ${r.at}</div>
       </div>
     `).join("");
